@@ -5,9 +5,12 @@ import { CTA, Brand, Navbar } from './components';
 import './App.css';
 import SignIn from './screens/SignIn/SignIn'
 import SignUp from './screens/SignUp/SignUp'
+import ChatBot from './screens/ChatBot/ChatBot';
+
+
 const App = () => (
   <div className="App">
-    <div className="gradient__bg"> 
+    {/* <div className="gradient__bg"> 
       <Navbar />
       <Header />
     </div>
@@ -16,9 +19,10 @@ const App = () => (
     <Features />
     <Possibility />
     <CTA />
-    <Footer />
+    <Footer /> */}
     {/* <SignIn />
     <SignUp/> */}
+    <ChatBot/>
   </div>
 );
 
