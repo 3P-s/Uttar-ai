@@ -10,19 +10,19 @@ import ChatBot from './screens/ChatBot/ChatBot';
 
 const App = () => (
   <div className="App">
-    {/* <div className="gradient__bg"> 
+    <div className="gradient__bg"> 
       <Navbar />
       <Header />
-    </div> */}
+    </div>
     {/* <Brand />
     <WhatGPT3 />
     <Features />
     <Possibility />
     <CTA />
-    <Footer />
+    <Footer /> */}
     <SignIn />
-    <SignUp/> */}
-    <ChatBot/>
+    <SignUp/>
+    {/* <ChatBot/> */}
   </div>
 );
 
