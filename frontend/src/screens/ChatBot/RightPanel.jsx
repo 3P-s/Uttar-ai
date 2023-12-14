@@ -1,14 +1,14 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import Navbar from '../../components/navbar/Navbar'
+import tesseract from 'tesseract.js'
+
 const RightPanel = () => {
 
     const url = "http://localhost:3000/";
 
     const [responce, setresponce] = useState([])
     const [inputValue, setinputValue] = useState()
-    const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
         const getResponce = async () => {
@@ -32,6 +32,42 @@ const RightPanel = () => {
     const handleChange = (e) => {
         setinputValue(e.target.value);
     };
+
+    const handleImage = async (e) => {
+        const file = e.target.files[0];
+    
+        try {
+          const result = await readAndRecognizeImage(file);
+          const extractedText = result.data.text;
+    
+          // Update the state variable inputValue with the extracted text
+          setinputValue(extractedText);
+    
+          // Log additional information if needed
+          console.log(result);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      const readAndRecognizeImage = (file) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+      
+          reader.onload = async (event) => {
+            const arrayBuffer = event.target.result;
+      
+            try {
+              const result = await tesseract.recognize(new Uint8Array(arrayBuffer), 'eng');
+              resolve(result);
+            } catch (error) {
+              reject(error);
+            }
+          };
+      
+          reader.readAsArrayBuffer(file);
+        });
+      };
 
     return (
         <div className="flex h-[97vh] w-full flex-col">
@@ -72,7 +108,19 @@ const RightPanel = () => {
             <form className="mt-2">
 
                 {/* take input for image */}
-
+                <label class="block">
+                    <span class="sr-only">Choose profile photo</span>
+                    <input type="file" class="block w-full text-sm text-gray-500
+                    file:me-4 file:py-2 file:px-4
+                    file:rounded-lg file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-blue-600 file:text-white
+                    hover:file:bg-blue-700
+                    file:disabled:opacity-50 file:disabled:pointer-events-none
+                    dark:file:bg-blue-500
+                    dark:hover:file:bg-blue-400
+                    " onChange={handleImage} />
+                </label>
 
                 <label htmlFor="chat-input" className="sr-only">
                     Enter your prompt
