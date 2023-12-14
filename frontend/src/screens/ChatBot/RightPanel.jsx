@@ -1,17 +1,21 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import obj from './obj'
 import axios from 'axios'
 
 const RightPanel = () => {
 
-    const url = "";
+    const url = "http://localhost:3000/";
 
     const [responce, setresponce] = useState([])
     const [inputValue, setinputValue] = useState()
 
     useEffect(()=>{
-        setresponce(obj);
+            const getResponce = async () => {
+                const res = await axios.get(url)
+                setresponce(res.data)
+            }
+    
+            getResponce();
     }, [])
 
     const handleQuestion = async (e) =>{
@@ -21,7 +25,7 @@ const RightPanel = () => {
             question: inputValue
         })
 
-        setresponce([...responce, res.data])
+        setresponce(res.data)
     }
 
     const handleChange = (e) => {
