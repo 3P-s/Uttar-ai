@@ -1,19 +1,32 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import obj from './obj'
+import axios from 'axios'
 
 const RightPanel = () => {
 
+    const url = "";
+
     const [responce, setresponce] = useState([])
+    const [inputValue, setinputValue] = useState()
 
     useEffect(()=>{
-        console.log(obj);
         setresponce(obj);
     }, [])
 
-    const handleQuestion = () =>{
-        
+    const handleQuestion = async (e) =>{
+        e.preventDefault();
+
+        const res = await axios.post(url, {
+            question: inputValue
+        })
+
+        setresponce([...responce, res.data])
     }
+
+    const handleChange = (e) => {
+        setinputValue(e.target.value);
+    };
 
     return (
         <div className="flex h-[97vh] w-full flex-col">
@@ -52,18 +65,23 @@ const RightPanel = () => {
             
             {/* Prompt message input */}
             <form className="mt-2">
-                <label htmlFor="chat-input" className="sr-only">Enter your prompt</label>
+                <label htmlFor="chat-input" className="sr-only">
+                    Enter your prompt
+                </label>
                 <div className="relative">
                     <textarea
                         id="chat-input"
                         className="block w-full resize-none rounded-xl border-none bg-slate-200 p-4 pl-10 pr-20 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-400 dark:focus:ring-blue-500 sm:text-base"
                         placeholder="Enter your prompt"
                         rows="1"
+                        value={inputValue}
+                        onChange={handleChange}
                         required
                     ></textarea>
                     <button
                         type="submit"
-                        className="absolute bottom-2 right-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:text-base" onClick={()=> handleQuestion}>
+                        className="absolute bottom-2 right-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:text-base" onClick={handleQuestion}
+                    >
                         Send <span className="sr-only">Send message</span>
                     </button>
                 </div>
