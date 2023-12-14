@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import Navbar from '../../components/navbar/Navbar'
 const RightPanel = () => {
 
     const url = "http://localhost:3000/";

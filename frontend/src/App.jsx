@@ -9,14 +9,16 @@ import SignIn from './screens/SignIn/SignIn'
 import SignUp from './screens/SignUp/SignUp'
 import ChatBot from './screens/ChatBot/ChatBot';
 import Home from './screens/Home';
+import Navbar from './components/navbar/Navbar';
 
 const App = () => (
   <div className="App">
     <div className="gradient__bg">
       <Router>
         <div>
+          <Navbar />
           <Routes>
-            <Route exact path='' element={<Home />} />
+            <Route exact path='/' element={<Home />} />
             <Route exact path='/login' element={<SignIn />} />
             <Route exact path='/signup' element={<SignUp />} />
             <Route exact path='/chat' element={<ChatBot />} />
