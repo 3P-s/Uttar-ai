@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const userRoutes = require('./routes/userRoutes');
+const qnaRoutes = require('./routes/qnaRoutes');
 
 const connectDB = (url) => {
     mongoose.connect(url);
@@ -15,6 +16,8 @@ const connectDB = (url) => {
 app.use(express.json());
 app.use(cors());
 app.use('/users', userRoutes);
+app.use('/qna', qnaRoutes);
+
 
 app.all('*', (req, res) => {
     res.send('Oops! Invalid request!');

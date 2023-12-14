@@ -4,10 +4,6 @@ const jwt = require('jsonwebtoken');
 const { setUser } = require('../services/auth');
 
 const signUp = async (req, res) => {
-    // Exsisting user
-    // Hash password
-    // User Creation 
-    // Return token
 
     const { name, email, password } = req.body;
     try {
@@ -19,7 +15,7 @@ const signUp = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         await User.create({ name, email, password: hashedPassword });
 
-        res.status(201).json({ message: 'User created successfully'});
+        res.status(201).json({ message: 'User created successfully' });
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: 'Something went wrong' });
@@ -42,7 +38,7 @@ const login = async (req, res) => {
 
         const token = setUser(exsistingUser);
         res.cookie("token", token);
-        res.status(201).json({ message: 'Login successful'});
+        res.status(201).json({ message: 'Login successful' });
     }
     catch (error) {
         res.status(500).json({ message: 'Something went wrong' });
