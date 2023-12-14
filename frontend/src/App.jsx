@@ -30,6 +30,8 @@ const App = () => (
     <Possibility />
     <CTA />
     <Footer /> */}
+    {/* <SignIn />
+    <SignUp/> */}
   </div>
 );
 
