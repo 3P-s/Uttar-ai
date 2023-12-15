@@ -5,9 +5,9 @@ const createQna = async (req, res) => {
     try {
         const question = req.body.question;
 
-	if(!question) {
-		res.send(400).json({ message: "Give me a proper question" });
-	}
+        if (!question) {
+            res.send(400).json({ message: "Give me a proper question" });
+        }
 
         let pyshell = new PythonShell('./controllers/model.py');
 
@@ -15,9 +15,9 @@ const createQna = async (req, res) => {
 
         pyshell.on('message', async function (message) {
             const answer = message;
-	    console.log(answer);
+            console.log(answer);
             await QNA.create({ question, answer });
-	    const qnaList = await QNA.find();
+            const qnaList = await QNA.find();
             res.status(201).send(qnaList);
         });
 

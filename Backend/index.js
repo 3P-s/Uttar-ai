@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/userRoutes');
 const qnaRoutes = require('./routes/qnaRoutes');
+const questionRoutes = require('./routes/questionRoutes');
 
 const connectDB = (url) => {
     mongoose.connect(url);
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/users', userRoutes);
 app.use('/qna', qnaRoutes);
+app.use('/quiz', questionRoutes);
 
 
 app.all('*', (req, res) => {
