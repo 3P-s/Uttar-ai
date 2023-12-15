@@ -73,11 +73,20 @@ const Navbar = () => {
                 <p>ChatBot {'->'}</p>
               </Link>
             </div>
-            <div className="gpt3__navbar-menu_container-links-sign">
-              <button type="button">Sign up</button>
-              <p>Sign in</p>
-              <button type="button">Sign up</button>
-            </div>
+            {(localStorage.getItem("authToken")) ? (
+              <div className="gpt3__navbar-sign">
+                <button className='m-1' type="button" onClick={logout}>Sign out</button>
+              </div>
+            ) : (
+              <div className="gpt3__navbar-sign">
+                <Link to={'login'}>
+                  <button className='m-1' type="button">Sign in</button>
+                </Link>
+                <Link to={'signup'}>
+                  <button className='m-1' type="button">Sign up</button>
+                </Link>
+              </div>
+            )}
           </div>
         )}
       </div>

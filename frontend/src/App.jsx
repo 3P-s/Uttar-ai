@@ -10,6 +10,7 @@ import SignIn from './screens/SignIn/SignIn'
 import SignUp from './screens/SignUp/SignUp'
 import ChatBot from './screens/ChatBot/ChatBot';
 import Home from './screens/Home';
+import Quiz from './screens/Quiz/Quiz';
 const App = () => (
   <div className="App">
     <div className="gradient__bg">
@@ -20,6 +21,7 @@ const App = () => (
             <Route exact path='/login' element={<SignIn />} />
             <Route exact path='/signup' element={<SignUp />} />
             <Route exact path='/chat' element={<ChatBot />} />
+            <Route exact path='/generate-quiz' element={<Quiz />} />
           </Routes>
         </div>
     </BrowserRouter>
