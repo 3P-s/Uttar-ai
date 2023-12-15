@@ -3,7 +3,7 @@ const Question = require('../models/questionModel');
 const getQuestion = async (req, res) => {
     try {
         const tag = req.body.tag;
-        const limit = req.body.limit;
+        const limit = req.body.count;
 
         questions = await Question.find({ tags: { $in: [tag] } }).limit(limit);
         res.status(201).send({ questions, tag });
