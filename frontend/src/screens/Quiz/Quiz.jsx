@@ -4,11 +4,13 @@ import './quiz.css';
 import QnA_Card from './QnA_Card';
 
 const Quiz = () => {
-    const url = 'localhost:8080/quiz/get';
+    const url = 'http://localhost:8080/quiz/get';
     const [quiz, setQuiz] = useState([]);
     const [tag, setTag] = useState('');
     const [count, setCount] = useState();
+    let index=0;
     const promts = [
+
         "DBMS",
         "Introduction",
         "Primary Key",
@@ -48,10 +50,8 @@ const Quiz = () => {
             tag,
             count,
         });
-
-        setQuiz(res.data);
-
-        console.log(res.data);
+        setQuiz(res.data.questions);
+        console.log(res.data.questions);
     };
 
     const handleTagChange = (e) => {
@@ -61,6 +61,7 @@ const Quiz = () => {
 
     const handleCountChange = (e) => {
         setCount(e.target.value);
+        console.log(count);
     };
 
     return (
@@ -69,9 +70,9 @@ const Quiz = () => {
                 <div className="p-8 mx-auto text-white">GENERATE THE QUIZ</div>
             </div>
             <div className="flex flex-wrap place-content-around h-60">
-                {quiz.map((ele, index) => (
+                {quiz.map((ele,index) => (
                     <div key={index}>
-                        <QnA_Card question={ele.question} answer={ele.answer} tag={ele.tag} />
+                        <QnA_Card question={ele.question} answer={ele.answer} tag={tag} index={index} />
                     </div>
                 ))}
             </div>
@@ -100,7 +101,6 @@ const Quiz = () => {
                             id="count-input"
                             className="w-full border-0 bg-slate-50 px-0 text-base text-slate-900 focus:outline-none dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-400"
                             placeholder="Number of questions"
-                            value={count}
                             onChange={handleCountChange}
                         />
                     </div>
