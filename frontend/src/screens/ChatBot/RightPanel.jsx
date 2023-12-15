@@ -5,7 +5,7 @@ import tesseract from 'tesseract.js'
 
 const RightPanel = () => {
 
-    const url = "http://localhost:3000/";
+    const url = "http://10.10.16.13:8080/qna";
 
     const [responce, setresponce] = useState([])
     const [inputValue, setinputValue] = useState()
@@ -13,7 +13,7 @@ const RightPanel = () => {
     useEffect(() => {
         const getResponce = async () => {
             const res = await axios.get(url)
-            setresponce(res.data)
+            setresponce([])
         }
 
         getResponce();
@@ -22,11 +22,14 @@ const RightPanel = () => {
     const handleQuestion = async (e) => {
         e.preventDefault();
 
+        setinputValue('')
         const res = await axios.post(url, {
             question: inputValue
         })
 
         setresponce(res.data)
+
+        console.log(res.data)
     }
 
     const handleChange = (e) => {
@@ -71,6 +74,11 @@ const RightPanel = () => {
 
     return (
         <div className="flex h-[97vh] w-full flex-col">
+            <div className='flex text-5xl'>
+                <div className='p-8 mx-auto text-white'>
+                    Chat-Bot
+                </div>
+            </div>
             {/* Prompt Messages */}
             <div
                 className="flex-1 overflow-y-auto rounded-xl bg-slate-200 p-4 text-sm leading-6 text-slate-900 dark:bg-slate-800 dark:text-slate-300 sm:text-base sm:leading-7">
@@ -108,9 +116,9 @@ const RightPanel = () => {
             <form className="mt-2">
 
                 {/* take input for image */}
-                <label class="block">
-                    <span class="sr-only">Choose profile photo</span>
-                    <input type="file" class="block w-full text-sm text-gray-500
+                <label className="block">
+                    <span className="sr-only">Choose profile photo</span>
+                    <input type="file" className="block w-full text-sm text-gray-500
                     file:me-4 file:py-2 file:px-4
                     file:rounded-lg file:border-0
                     file:text-sm file:font-semibold
