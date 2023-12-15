@@ -24,15 +24,14 @@ const Navbar = () => {
           <Link to={'/generate-quiz'}> 
               <p>Lets-Generate-Quiz</p>
           </Link>
-          <p><a href="https://ai.google/why-ai/" >What is AI?</a></p>
-          <Link to={''}> 
+          <Link to={"https://ai.google/why-ai/"}> 
               <p>What is AI?</p>
           </Link>
           <Link to={'/generate-quiz'}> 
               <p>ChatBot</p>
           </Link>
           <p><a href="https://github.com/3P-s/Mini-Project  ">Github</a></p>
-          <p><a href="https://github.com/3P-s">AboutUS</a></p>
+          <p><a href="https://github.com/3P-s">About Us</a></p>
         </div>
       </div>
       {(localStorage.getItem("authToken")) ? (
