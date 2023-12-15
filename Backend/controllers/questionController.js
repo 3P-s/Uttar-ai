@@ -15,14 +15,16 @@ const getQuestion = async (req, res) => {
 
 const insertQuestion = async (req, res) => {
     try {
-        const question = req.body.question;
-        const tags = req.body.tags;
-        const answer = req.body.answer;
+        for (let i = 0; i < req.body.length; i++) {
+            const question = req.body[i].question;
+            const answer = req.body[i].answer;
+            const tags = req.body[i].tags;
 
-        const newQuestion = new Question({ question, answer, tags });
-        await newQuestion.save();
+            const newQuestion = new Question({ question, answer, tags });
+            await newQuestion.save();
+        }
 
-        res.status(201).json(newQuestion);
+        res.status(201).json({ message: "Questions added successfully" });
 
     } catch (error) {
         res.status(400).json({ message: error.message });
