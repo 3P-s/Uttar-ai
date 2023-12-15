@@ -14,24 +14,24 @@ const Navbar = () => {
   return (
     <div className="gpt3__navbar">
       <div className="gpt3__navbar-links">
-        {/* <div className="gpt3__navbar-links_logo">
-          <img src={logo} />
-        </div> */}
         <div className="gpt3__navbar-links_container">
-        <a href='/' className='glow'> 
-              <p>Uttar.Ai</p>
-        </a>
-          <Link to={'/generate-quiz'}> 
-              <p>Lets-Generate-Quiz</p>
+          <p><a href='/' className='hover text-xl'>
+            Uttar.Ai
+          </a>
+          </p>
+
+          <Link to={'/generate-quiz'} className='hover'>
+            <p>Generate-Quiz</p>
           </Link>
-          <Link to={"https://ai.google/why-ai/"}> 
-              <p>What is AI?</p>
+
+          <Link to={"https://ai.google/why-ai/"} className='hover'>
+            <p>What is AI?</p>
           </Link>
-          <Link to={'/generate-quiz'}> 
-              <p>ChatBot</p>
+          <p><a href="https://github.com/3P-s/Mini-Project" className='hover'>Github</a></p>
+          <p><a href="https://github.com/3P-s" className='hover'>About Us</a></p>
+          <Link to={'/chat'} className='hover'>
+            <p>ChatBot {'->'}</p>
           </Link>
-          <p><a href="https://github.com/3P-s/Mini-Project  ">Github</a></p>
-          <p><a href="https://github.com/3P-s">About Us</a></p>
         </div>
       </div>
       {(localStorage.getItem("authToken")) ? (
@@ -55,11 +55,23 @@ const Navbar = () => {
         {toggleMenu && (
           <div className="gpt3__navbar-menu_container scale-up-center">
             <div className="gpt3__navbar-menu_container-links">
-              <p><a href="#home">Home</a></p>
-              <p><a href="#wgpt3">What is GPT3?</a></p>
-              <p><a href="#possibility">Open AI</a></p>
-              <p><a href="#features">Case Studies</a></p>
-              <p><a href="#blog">Library</a></p>
+              <p><a href='/' className='hover text-xl'>
+                Uttar.Ai
+              </a>
+              </p>
+
+              <Link to={'/generate-quiz'} className='hover'>
+                <p>Generate-Quiz</p>
+              </Link>
+
+              <Link to={"https://ai.google/why-ai/"} className='hover'>
+                <p>What is AI?</p>
+              </Link>
+              <p><a href="https://github.com/3P-s/Mini-Project" className='hover'>Github</a></p>
+              <p><a href="https://github.com/3P-s" className='hover'>About Us</a></p>
+              <Link to={'/chat'} className='hover'>
+                <p>ChatBot {'->'}</p>
+              </Link>
             </div>
             <div className="gpt3__navbar-menu_container-links-sign">
               <button type="button">Sign up</button>
