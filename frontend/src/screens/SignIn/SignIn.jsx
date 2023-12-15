@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './signin.css'
+import Footer from '../../containers/footer/Footer'
 const SignIn = () => {
   const navigate = useNavigate();
     const [username, setUsername] = useState("");
@@ -36,6 +37,7 @@ const SignIn = () => {
     }
 
   return (
+    <div>
     <form onSubmit={handleSubmit}>
       <div className='flex mx-auto'>
         <div className='flex mx-auto'>
@@ -54,6 +56,8 @@ const SignIn = () => {
         </div>
       </div>
     </form>
+    <Footer/>
+    </div>
   )
 }
 

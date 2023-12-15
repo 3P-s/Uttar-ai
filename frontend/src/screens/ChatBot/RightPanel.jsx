@@ -41,8 +41,8 @@ const RightPanel = () => {
     
         try {
           const result = await readAndRecognizeImage(file);
-          const extractedText = result.data.text;
-    
+          let extractedText = result.data.text;
+          extractedText = extractedText.replace(/\n/g, ' ');
           // Update the state variable inputValue with the extracted text
           setinputValue(extractedText);
     
