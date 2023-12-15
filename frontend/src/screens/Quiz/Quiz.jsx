@@ -8,7 +8,7 @@ const Quiz = () => {
     const [quiz, setQuiz] = useState([]);
     const [tag, setTag] = useState('');
     const [count, setCount] = useState();
-    let index=0;
+    const [prompt, setprompt] = useState()
     const promts = [
 
         "DBMS",
@@ -51,6 +51,7 @@ const Quiz = () => {
             count,
         });
         setQuiz(res.data.questions);
+        setprompt(res.data.tag)
         console.log(res.data.questions);
     };
 
@@ -72,7 +73,7 @@ const Quiz = () => {
             <div className="flex flex-wrap place-content-around h-60">
                 {quiz.map((ele,index) => (
                     <div key={index}>
-                        <QnA_Card question={ele.question} answer={ele.answer} tag={tag} index={index} />
+                        <QnA_Card question={ele.question} answer={ele.answer} tag={prompt} ind={index} />
                     </div>
                 ))}
             </div>
@@ -86,8 +87,7 @@ const Quiz = () => {
                                     <p
                                         key={index}
                                         onClick={() => handleTagChange(prompt)}
-                                        className={`px-2 py-1 border rounded-full ${tag === prompt ? 'bg-blue-600 text-slate-50' : 'border-slate-300 text-slate-600 dark:border-slate-700 dark:text-slate-300'} hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900`}
-                                    >
+                                        className={`px-2 py-1 border rounded-full ${tag === prompt ? 'bg-blue-600 text-slate-50' : 'border-slate-300 text-slate-600 dark:border-slate-700 dark:text-slate-300'} hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900`}>
                                         {prompt}
                                     </p>
                                 ))}
@@ -97,7 +97,6 @@ const Quiz = () => {
                             Enter number of questions
                         </label>
                         <input
-                            type="number"
                             id="count-input"
                             className="w-full border-0 bg-slate-50 px-0 text-base text-slate-900 focus:outline-none dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-400"
                             placeholder="Number of questions"
@@ -109,8 +108,7 @@ const Quiz = () => {
                             <button
                                 type="submit"
                                 onClick={handleQuiz}
-                                className="inline-flex items-center gap-x-2 rounded-lg bg-blue-600 px-4 py-2.5 text-center text-base font-medium text-slate-50 hover:bg-blue-800 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900"
-                            >
+                                className="inline-flex items-center gap-x-2 rounded-lg bg-blue-600 px-4 py-2.5 text-center text-base font-medium text-slate-50 hover:bg-blue-800 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900">
                                 Generate
                             </button>
                             <button

@@ -10,7 +10,7 @@ const QnA_Card = (props) => {
         >
             <div>
                 <div className="flex items-center justify-between gap-x-4">
-                    <h3 id="tier-starter" className="text-lg font-semibold leading-8">Q{props.index+1}</h3>
+                    <h3 id="tier-starter" className="text-lg font-semibold leading-8">Q{props.ind+1}</h3>
                     <p
                         className="rounded-full bg-blue-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-blue-600"
                     >
