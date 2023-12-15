@@ -2,21 +2,19 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  BrowserRouter
 } from "react-router-dom";
 import './App.css';
 import SignIn from './screens/SignIn/SignIn'
 import SignUp from './screens/SignUp/SignUp'
 import ChatBot from './screens/ChatBot/ChatBot';
 import Home from './screens/Home';
-import Navbar from './components/navbar/Navbar';
-
 const App = () => (
   <div className="App">
     <div className="gradient__bg">
-      <Router>
+    <BrowserRouter>
         <div>
-          <Navbar />
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/login' element={<SignIn />} />
@@ -24,7 +22,7 @@ const App = () => (
             <Route exact path='/chat' element={<ChatBot />} />
           </Routes>
         </div>
-      </Router>
+    </BrowserRouter>
     </div>
     {/* <Brand />
     <WhatGPT3 />

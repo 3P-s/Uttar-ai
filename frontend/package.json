@@ -19,7 +19,7 @@
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.21.0",
     "react-scrollama": "^2.3.3",
-    "tesseract.js": "^5.0.3"
+    "tesseract.js": "^2.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

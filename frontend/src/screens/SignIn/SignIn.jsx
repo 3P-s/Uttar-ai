@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import './signin.css'
 const SignIn = () => {
+  const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const handleSubmit = async (e) => {
@@ -16,13 +16,14 @@ const SignIn = () => {
         body: JSON.stringify({ email: username, password: password })
       });
       const json = await res.json();
-      console.log(json);
+      console.log(json.message);
       if (!json) {
         alert("Enter Valid Creds")
       }
-      if (json.success) {
-        localStorage.setItem("authToken",json.authToken)
+      if (json.message) {
+        localStorage.setItem("authToken", json.token);
         console.log(localStorage.getItem("authToken"));
+        navigate("/");
       }
     } 
 
@@ -36,7 +37,6 @@ const SignIn = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-
       <div className='flex mx-auto'>
         <div className='flex mx-auto'>
           <div className="gpt3__header section__padding" id="home">

@@ -38,7 +38,7 @@ const login = async (req, res) => {
 
         const token = setUser(exsistingUser);
         res.cookie("token", token);
-        res.status(201).json({ message: 'Login successful' });
+        res.status(201).json({ 'message': 'Login successful' , token});
     }
     catch (error) {
         res.status(500).json({ message: 'Something went wrong' });
