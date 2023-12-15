@@ -70,7 +70,7 @@ const Quiz = () => {
             <div className="flex text-5xl">
                 <div className="p-8 mx-auto text-white">GENERATE THE QUIZ</div>
             </div>
-            <div className="flex flex-wrap place-content-around h-60">
+            <div className="flex flex-wrap place-content-around ">
                 {quiz.map((ele,index) => (
                     <div key={index}>
                         <QnA_Card question={ele.question} answer={ele.answer} tag={prompt} ind={index} />
@@ -93,9 +93,6 @@ const Quiz = () => {
                                 ))}
                             </div>
                         </div>
-                        <label htmlFor="count-input" className="sr-only">
-                            Enter number of questions
-                        </label>
                         <input
                             id="count-input"
                             className="w-full border-0 bg-slate-50 px-0 text-base text-slate-900 focus:outline-none dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-400"
