@@ -18,12 +18,21 @@ const Navbar = () => {
           <img src={logo} />
         </div> */}
         <div className="gpt3__navbar-links_container">
-          <p><a className='glow' href="#home">Uttar.Ai</a></p>
-          <p><a href="#home">Home</a></p>
-          <p><a href="#wgpt3">What is AI?</a></p>
-          <p><a href="#features">Lets-Generate-Quiz</a></p>
-          <p><a href="#blog">Github</a></p>
-          <p><a href="#possibility">About</a></p>
+        <a href='/' className='glow'> 
+              <p>Uttar.Ai</p>
+        </a>
+          <Link to={'/generate-quiz'}> 
+              <p>Lets-Generate-Quiz</p>
+          </Link>
+          <p><a href="https://ai.google/why-ai/" >What is AI?</a></p>
+          <Link to={''}> 
+              <p>What is AI?</p>
+          </Link>
+          <Link to={'/generate-quiz'}> 
+              <p>ChatBot</p>
+          </Link>
+          <p><a href="https://github.com/3P-s/Mini-Project  ">Github</a></p>
+          <p><a href="https://github.com/3P-s">AboutUS</a></p>
         </div>
       </div>
       {(localStorage.getItem("authToken")) ? (
