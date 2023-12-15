@@ -4,16 +4,21 @@ const { PythonShell } = require('python-shell');
 const createQna = async (req, res) => {
     try {
         const question = req.body.question;
+
+	if(!question) {
+		res.send(400).json({ message: "Give me a proper question" });
+	}
+
         let pyshell = new PythonShell('./controllers/model.py');
 
         pyshell.send(question);
 
         pyshell.on('message', async function (message) {
-            console.log(message);
             const answer = message;
+	    console.log(answer);
             await QNA.create({ question, answer });
-            const qnaList = await QNA.find();
-            res.status(201).json({ qnaList });
+	    const qnaList = await QNA.find();
+            res.status(201).send(qnaList);
         });
 
     } catch (error) {
@@ -22,5 +27,5 @@ const createQna = async (req, res) => {
 }
 
 module.exports = {
-    createQna,
+    createQna
 }
