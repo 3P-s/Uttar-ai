@@ -19,19 +19,32 @@ const Navbar = () => {
             Uttar.Ai
           </a>
           </p>
-
-          <Link to={'/generate-quiz'} className='hover'>
+          {(localStorage.getItem("authToken")) ? (
+            <Link to={'/generate-quiz'} className='hover'>
             <p>Generate-Quiz</p>
           </Link>
+          ) : (
+            <Link to={'/login'} className='hover'>
+            <p>Generate-Quiz</p>
+          </Link>
+          )}
+          
 
           <Link to={"https://ai.google/why-ai/"} className='hover'>
             <p>What is AI?</p>
           </Link>
           <p><a href="https://github.com/3P-s/Mini-Project" className='hover'>Github</a></p>
           <p><a href="https://github.com/3P-s" className='hover'>About Us</a></p>
-          <Link to={'/chat'} className='hover'>
+          {(localStorage.getItem("authToken")) ? (
+            <Link to={'/chat'} className='hover'>
             <p>ChatBot {'->'}</p>
           </Link>
+          ) : (
+            <Link to={'/login'} className='hover'>
+            <p>ChatBot {'->'}</p>
+          </Link>
+          )}
+          
         </div>
       </div>
       {(localStorage.getItem("authToken")) ? (
