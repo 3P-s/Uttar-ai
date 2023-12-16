@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './quiz.css';
 import QnA_Card from './QnA_Card';
-
+const img = '../../../src/assets/quiz.svg';
 const Quiz = () => {
-    const url = 'http://localhost:8080/quiz/get';
+    const url = 'http://10.10.16.13/quiz/get';
     const [quiz, setQuiz] = useState([]);
     const [tag, setTag] = useState('');
     const [count, setCount] = useState();
     const [prompt, setprompt] = useState()
+    const [loading, setLoading] = useState(false);
     const promts = [
-
         "DBMS",
         "Introduction",
         "Primary Key",
@@ -42,7 +42,6 @@ const Quiz = () => {
         "UPDATE",
         "DISTINCT"
     ];
-
     const handleQuiz = async (e) => {
         e.preventDefault();
 
