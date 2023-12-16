@@ -5,7 +5,9 @@ const getQuestion = async (req, res) => {
         const tag = req.body.tag;
         const limit = req.body.count;
 
-        questions = await Question.find({ tags: { $in: [tag] } }).limit(limit);
+        const allQuestions = await Question.find({ tags: { $in: [tag] } });
+        const questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, limit);
+
         res.status(201).send({ questions, tag });
 
     } catch (error) {
