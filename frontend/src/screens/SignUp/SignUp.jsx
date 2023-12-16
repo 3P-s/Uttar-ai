@@ -8,7 +8,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const res = await fetch("http://localhost:8080/users/signup", {
+      const res = await fetch("http://10.10.16.13:8080/users/signup", {
         method:'POST',
         headers:{
           'Content-Type':'application/json'
