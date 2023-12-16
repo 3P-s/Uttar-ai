@@ -4,7 +4,7 @@ import './quiz.css';
 import QnA_Card from './QnA_Card';
 const img = '../../../src/assets/quiz.svg';
 const Quiz = () => {
-    const url = 'http://10.10.16.13/quiz/get';
+    const url = 'http://10.10.16.13:8080/quiz/get';
     const [quiz, setQuiz] = useState([]);
     const [tag, setTag] = useState('');
     const [count, setCount] = useState();
