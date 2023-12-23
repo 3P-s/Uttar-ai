@@ -1,5 +1,5 @@
 # Welcome to [Uttar.Ai](https://uttar-ai.onrender.com/)🍀
-### A.I. based Question-Solving & Quiz-Setting Portal 🧑‍💻
+## A.I. based Question-Solving & Quiz-Setting Portal 🧑‍💻
 
 - Technology Stack used:
 	- Frontend: 
