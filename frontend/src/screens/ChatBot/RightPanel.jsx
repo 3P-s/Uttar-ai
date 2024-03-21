@@ -9,7 +9,7 @@ const RightPanel = () => {
 
     const [responce, setresponce] = useState([])
     const [inputValue, setinputValue] = useState()
-
+    const [loading, setloading] = useState(false)
     useEffect(() => {
         const getResponce = async () => {
             const res = await axios.get(url)
@@ -38,39 +38,39 @@ const RightPanel = () => {
 
     const handleImage = async (e) => {
         const file = e.target.files[0];
-    
-        try {
-          const result = await readAndRecognizeImage(file);
-          let extractedText = result.data.text;
-          extractedText = extractedText.replace(/\n/g, ' ');
-          // Update the state variable inputValue with the extracted text
-          setinputValue(extractedText);
-    
-          // Log additional information if needed
-          console.log(result);
-        } catch (error) {
-          console.error(error);
-        }
-      };
 
-      const readAndRecognizeImage = (file) => {
+        try {
+            const result = await readAndRecognizeImage(file);
+            let extractedText = result.data.text;
+            extractedText = extractedText.replace(/\n/g, ' ');
+            // Update the state variable inputValue with the extracted text
+            setinputValue(extractedText);
+
+            // Log additional information if needed
+            console.log(result);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const readAndRecognizeImage = (file) => {
         return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-      
-          reader.onload = async (event) => {
-            const arrayBuffer = event.target.result;
-      
-            try {
-              const result = await tesseract.recognize(new Uint8Array(arrayBuffer), 'eng');
-              resolve(result);
-            } catch (error) {
-              reject(error);
-            }
-          };
-      
-          reader.readAsArrayBuffer(file);
+            const reader = new FileReader();
+
+            reader.onload = async (event) => {
+                const arrayBuffer = event.target.result;
+
+                try {
+                    const result = await tesseract.recognize(new Uint8Array(arrayBuffer), 'eng');
+                    resolve(result);
+                } catch (error) {
+                    reject(error);
+                }
+            };
+
+            reader.readAsArrayBuffer(file);
         });
-      };
+    };
 
     return (
         <div className="flex h-[97vh] w-full flex-col">
